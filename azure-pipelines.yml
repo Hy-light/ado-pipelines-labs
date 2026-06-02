@@ -1,0 +1,50 @@
+# azure-pipelines.yml
+# Lab 1 — Hello, Pipelines
+
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: Greet
+    displayName: Say hello
+    jobs:
+      - job: SayHello
+        displayName: Print greeting and diagnostics
+
+        steps:
+          - checkout: self
+            displayName: Check out the repository
+
+          - script: echo "Hello from Azure Pipelines, $(Build.RequestedFor)!"
+            displayName: Print a greeting
+
+          - script: |
+              echo "Agent OS:         $(Agent.OS)"
+              echo "Agent name:       $(Agent.Name)"
+              echo "Pipeline name:    $(Build.DefinitionName)"
+              echo "Repository:       $(Build.Repository.Name)"
+              echo "Branch:           $(Build.SourceBranchName)"
+              echo "Commit SHA:       $(Build.SourceVersion)"
+              echo "Build ID:         $(Build.BuildId)"
+              echo "---"
+              echo "Working directory contents:"
+              ls -la
+            displayName: Show system info
+
+          - task: PowerShell@2
+            displayName: Friendly farewell (demonstrating a task)
+            inputs:
+              targetType: inline
+              script: |
+                Write-Host "Workflow complete. Have a great day!"
+                Write-Host "This step used the PowerShell@2 task — a built-in Microsoft-maintained task."

@@ -73,6 +73,7 @@ variables:
   buildConfiguration: Release
   dotnetVersion: 8.0.x
   solution: '**/*.sln'
+  NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
 
 pool:
   name: Ado-labs

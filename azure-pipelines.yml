@@ -76,7 +76,7 @@ variables:
 
 pool:
   name: Ado-labs
-  
+
 stages:
   # ----------------------------------------------------------------------
   # 1. Build — restore, build, publish artefact
@@ -111,7 +111,7 @@ stages:
             displayName: Restore
             inputs:
               command: restore
-              projects: $(solution)
+              projects: '**/*.csproj'
               feedsToUse: select
               arguments: --locked-mode
 
@@ -119,7 +119,7 @@ stages:
             displayName: Build
             inputs:
               command: build
-              projects: $(solution)
+              projects: '**/*.csproj'
               arguments: --configuration $(buildConfiguration) --no-restore
 
           - task: DotNetCoreCLI@2

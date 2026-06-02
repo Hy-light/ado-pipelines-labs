@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CloudLaunch.Api.Tests/CloudLaunch.Api.Tests.csproj" />
+    <Project Path="src/CloudLaunch.Api/CloudLaunch.Api.csproj" />
+  </Folder>
+</Solution>

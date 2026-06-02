@@ -12,7 +12,8 @@ pr:
       - main
 
 pool:
-  vmImage: ubuntu-latest
+  # vmImage: ubuntu-latest
+  name: azureagent
 
 stages:
   - stage: Greet
